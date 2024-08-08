@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Recommendation</title>
+</head>
+<body>
+    <h1>Movie Recommendation System</h1>
+    <form action="/predict" method="post">
+        <label for="movie">Enter movie name:</label>
+        <input type="text" id="movie" name="movie" required>
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if recommendations %}
+        <h2>Recommendations for {{ movie }}:</h2>
+        <ul>
+            {% for rec in recommendations %}
+                <li>{{ rec }}</li>
+            {% endfor %}
+        </ul>
+    {% elif movie %}
+        <p>Movie '{{ movie }}' not found in the dataset.</p>
+    {% endif %}
+</body>
+</html>
